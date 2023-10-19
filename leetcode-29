@@ -1,0 +1,38 @@
+/*Divide Two Integers-(LEETCODE-29)
+Problem Statement-
+Given two integers dividend and divisor, divide two integers without using multiplication, division, and mod operator.
+The integer division should truncate toward zero, which means losing its fractional part. For example, 8.345 would be truncated to 8, and -2.7335 would be truncated to -2.
+Return the quotient after dividing dividend by divisor.
+Note: Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: [−231, 231 − 1]. For this problem, if the quotient is strictly greater than 231 - 1, then return 231 - 1, and if the quotient is strictly less than -231, then return -231.
+
+Time Complexity-
+O(1)
+
+Space Complexity-
+O(1)
+
+Approach-
+1)The function takes two long long inputs: dividend and divisor.
+2)It initializes a long long variable ans to store the result of the division.
+3)The first conditional check examines whether both the dividend and divisor are equal to -1. If they are, it returns 1, as a special case for division by -1.
+4)The second conditional check checks if the dividend is negative (less than 0) and the divisor is -1. If this condition is met, it calculates the result using two's complement as follows:
+5)It negates the dividend by subtracting it from -2 times itself: (dividend - (2 * dividend)).
+6)It then subtracts 1 from the negated dividend: (dividend - (2 * dividend)) - 1.
+7)If neither of the special cases applies, the code proceeds with regular integer division: ans = dividend / divisor.
+8)Finally, the function returns the calculated result stored in the ans variable.
+
+Code-*/
+class Solution {
+public:
+long long divide(long long dividend, long long divisor) {
+long long ans;
+if(dividend==-1 && divisor==-1)
+return 1;
+if(dividend<0 && divisor==-1)
+ans=(dividend-(2*dividend))-1; 
+else
+ans=dividend/divisor;
+
+return ans;
+}
+};
